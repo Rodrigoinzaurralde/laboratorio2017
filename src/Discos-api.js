@@ -21,11 +21,6 @@ router.use(function (req, res, next) {
     next();
 });
 
-
-
-
-
-
 // Rutas /Disco
 router.route('/')
 

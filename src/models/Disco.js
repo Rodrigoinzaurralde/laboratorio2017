@@ -7,7 +7,21 @@ var DiscoSchema = new Schema({
         minlength: 2,
         required: true
     },
-    cantidad: Number
+    lanzamiento: {
+        type: Date,
+        require: false
+    },
+    imagenes: {
+        type: String,
+        maxlength: 500,
+        require: false
+    },
+    calificacion: {
+        type: Number,
+        minlength: 1,
+        maxlength: 1,
+        required: false
+    }
 });
 
 module.exports = mongoose.model('Disco', DiscoSchema);

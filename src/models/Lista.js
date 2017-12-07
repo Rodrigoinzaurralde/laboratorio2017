@@ -7,7 +7,6 @@ var ListaSchema = new Schema({
         minlength:2,
         required: true
     },
-    cantidad: Number
 });
 
 module.exports = mongoose.model('Lista', ListaSchema);
