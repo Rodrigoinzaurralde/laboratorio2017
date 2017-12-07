@@ -1,0 +1,26 @@
+{
+  "name": "oso-server-example",
+  "version": "0.0.1",
+  "description": "Servicio rest de ejemplo para aprender Express y NodeJs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/welcome-project"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

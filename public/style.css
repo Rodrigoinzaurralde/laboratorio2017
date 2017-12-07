@@ -1,0 +1,82 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  color: darkblue;
+}
+
+h6 {
+  font-weight: bold;
+  color: rgb(209, 209, 221);
+}
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 1200px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: rgb(44, 54, 65);
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 10px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightslategray;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightblue;
+  border: 1px solid grey;
+  box-shadow: 2px 2px darkcyan;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: blueviolet;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}
+

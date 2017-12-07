@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReMi Search</title>
+    <meta name="description" content="laboratorio back-end">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        Registrar
+      </h1>
+    </header>
+
+    <main>
+      <p>artista:</p>
+      <form>
+        <input id="nombre" name="Nombre" type="text" maxlength="100" placeholder="ej:Juan">
+        <input id="genero" name="Genero" type="text" maxlength="100" placeholder="ej:Rock">
+        <input id="imagenes" name="Imagenes" type="text" maxlength="800" placeholder="Enlaces aquí">
+        <h6>calificacion</h6>
+        <select name="calificacion" size="4">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <input id="integrantes" name="integrantes" type="text" maxlength="500" placeholder="ingrese">
+      <button type="submit">Submit</button>
+      </form>
+      <section class="Artistas">
+        <ul id="artistas">
+        </ul>
+      </section>
+    </main>
+
+    <main>
+      <p>cancion </p>
+      <form id="form-cancion">
+        <input id="nombre" name="nombre" type="text" maxlength="100" placeholder="Cancion">
+        <input id="duracion" name="duracion" type="time" placeholder="00:00">
+        <h6>calificacion</h6>
+        <select name="calificacion" size="4">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+      <section class="Canciones">
+        <ul id="canciones">
+        </ul>
+      </section>
+    </main>
+
+    <main>
+      <p>disco </p>
+      <form id="form-disco">
+        <input id="nombre" name="nombre" type="text" maxlength="100" placeholder="nombre">
+        <input id="lanzamiento" name="lanzamiento" type="date" placeholder="09/12/2000">
+        <h6>calificacion</h6>
+        <select name="calificacion" size="4">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+      <section class="Discos">
+        <ul id="Discos">
+        </ul>
+      </section>
+    </main>
+
+    <main>
+      <p>lista </p>
+      <form id="form-lista">
+        <input id="nombre" name="nombre" type="text" maxlength="100" placeholder="Lista">
+        <button type="submit">Submit</button>
+      </form>
+      <section class="Listas">
+        <ul id="Listas">
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      Noel, Rodrigo, Gerardo
+    </footer>
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/client.js"></script>
+
+  </body>
+</html>
