@@ -1,7 +1,7 @@
   // server.js
 // where your node app starts
 // var mongo_db_string = 'mongodb://localhost:27017/api-mongo'
-var mongo_db_string = 'mongodb://noelmastrangelo:noelmas007@ds044577.mlab.com:44577/remi-search';
+// var mongo_db_string = 'mongodb://noelmastrangelo:noelmas007@ds044577.mlab.com:44577/remi-search';
 
 var express = require('express');
 var artista_router = require('./src/artistas-api');
@@ -9,13 +9,15 @@ var cancion_router = require('./src/canciones-api');
 var disco_router = require('./src/discos-api');
 var lista_router = require('./src/listas-api');
 var app = express();
-
+var db = require('./dbConnection').dbConnection;
+/*
 var mongoose = require('mongoose');
 mongoose.connect(mongo_db_string, {
   useMongoClient: true
 }); 
 
 var db = mongoose.connection;
+*/
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log("Conexión con la BD establecida");

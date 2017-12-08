@@ -3,8 +3,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var Artista = require('./models/artista');
-
+var db = require('./../dbConnection').dbConnection;
 var router = new express.Router();
+
+const ObjectId = require('mongodb').ObjectId;
 
 router.use(morgan('dev'));
 
@@ -12,7 +14,6 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 router.use(bodyParser.json());
-
 
 // RUTAS 
 
@@ -33,7 +34,7 @@ router.route('/')
         artista.imagenes = req.body.imagenes;
         artista.calificacion = req.body.calificacion;
         artista.integrantes = req.body.integrantes;
-        artista.save(function (err) {
+        db.collection('Artista').insert(artista, function (err) {
             if (err)
                 res.send(err);
             res.json({
@@ -45,7 +46,7 @@ router.route('/')
 
     // Obtener 
     .get(function (req, res) {
-        Artista.find(function (err, artistas) {
+        db.collection('Artista').find({}).toArray(function (err, artistas) {
             if (err)
                 res.send(err);
             res.json(artistas);
