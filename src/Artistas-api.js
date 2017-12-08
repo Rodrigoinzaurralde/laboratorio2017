@@ -58,7 +58,7 @@ router.route('/')
 router.route('/:artista_id')
 
     .get(function (req, res) {
-        Artista.findById(req.params.artista_id, function (err, artista) {
+        db.collection('Artista').findById(req.params.artista_id, function (err, artista) {
             if (err)
                 res.status(500).send(err);
             else if (artista === null)
@@ -70,7 +70,7 @@ router.route('/:artista_id')
 
     // actualizar artista
     .put(function (req, res) {
-        Artista.findById(req.params.artista_id, function (err, artista) {
+        db.collection('Artista').findById(req.params.artista_id, function (err, artista) {
 
             if (err)
                 res.status(404).send(err);
@@ -94,7 +94,7 @@ router.route('/:artista_id')
     //eliminar
 
     .delete(function (req, res) {
-        Artista.remove({
+        db.collection('Artista').remove({
             _id: req.params.artista_id
         }, function (err, artista) {
             if (err)

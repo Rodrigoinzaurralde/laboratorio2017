@@ -10,14 +10,7 @@ var disco_router = require('./src/discos-api');
 var lista_router = require('./src/listas-api');
 var app = express();
 var db = require('./dbConnection').dbConnection;
-/*
-var mongoose = require('mongoose');
-mongoose.connect(mongo_db_string, {
-  useMongoClient: true
-}); 
 
-var db = mongoose.connection;
-*/
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log("Conexión con la BD establecida");

@@ -26,14 +26,7 @@ var ArtistaSchema = new Schema({
     integrantes: {
         type: String,
         require: false
-<<<<<<< Updated upstream
-=======
     },
-    favorito: {
-        type: boolean,
-        require: false
->>>>>>> Stashed changes
-    }
 });
 
 module.exports = mongoose.model('Artista', ArtistaSchema);

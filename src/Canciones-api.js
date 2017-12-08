@@ -3,8 +3,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var Cancion = require('./models/cancion');
-
+var db = require('./../dbConnection').dbConnection;
 var router = new express.Router();
+
+const ObjectId = require('mongodb').ObjectId;   
 
 router.use(morgan('dev'));
 
@@ -32,11 +34,11 @@ router.route('/')
         cancion.nombre = req.body.nombre;
         cancion.duracion = req.body.duracion;
         cancion.calificacion = req.body.calificacion;
-        cancion.save(function (err) {
+        db.collection('Cancion').insert(cancion, function (err) {
             if (err)
                 res.send(err);
             res.json({
-                message: 'creado',
+                message: 'cancion creada',
                 data: cancion
             });
         });
@@ -44,10 +46,10 @@ router.route('/')
 
     // Obtener 
     .get(function (req, res) {
-        Cancion.find(function (err, cancion) {
+        db.collection('Cancion').find({}).toArray(function (err, canciones) {
             if (err)
                 res.send(err);
-            res.json(cancion);
+            res.json(canciones);
         });
     });
 
@@ -56,11 +58,11 @@ router.route('/')
 router.route('/:cancion_id')
 
     .get(function (req, res) {
-        Cancion.findById(req.params.cancion_id, function (err, cancion) {
+        db.collection('Cancion').findById(req.params.cancion_id, function (err, cancion) {
             if (err)
                 res.status(500).send(err);
             else if (cancion === null)
-                res.status(404).send('No se encontró');
+                res.status(404).send('No se encontró esa canción');
             else
                 res.json(cancion);
         });
@@ -68,7 +70,7 @@ router.route('/:cancion_id')
 
     // actualizar cancion
     .put(function (req, res) {
-        Cancion.findById(req.params.cancion_id, function (err, cancion) {
+        db.collection('Cancion').findById(req.params.cancion_id, function (err, cancion) {
 
             if (err)
                 res.status(404).send(err);
@@ -90,7 +92,7 @@ router.route('/:cancion_id')
     //eliminar
 
     .delete(function (req, res) {
-        Cancion.remove({
+        db.collection('Cancion').remove({
             _id: req.params.cancion_id
         }, function (err, cancion) {
             if (err)

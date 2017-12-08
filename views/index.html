@@ -40,7 +40,7 @@
 
     <main>
       <p>cancion </p>
-      <form id="form-cancion">
+      <form id="form-cancion" method="POST" action="/api/cancion">
         <input id="nombre" name="nombre" type="text" maxlength="100" placeholder="Cancion">
         <input id="duracion" name="duracion" type="time" placeholder="00:00">
         <h6>calificacion</h6>
@@ -61,7 +61,7 @@
 
     <main>
       <p>disco </p>
-      <form id="form-disco">
+      <form id="form-disco" method="POST" action="/api/disco">
         <input id="nombre" name="nombre" type="text" maxlength="100" placeholder="nombre">
         <input id="lanzamiento" name="lanzamiento" type="date" placeholder="09/12/2000">
         <h6>calificacion</h6>

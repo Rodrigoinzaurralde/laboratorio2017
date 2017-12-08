@@ -2,9 +2,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var db = require('./../dbConnection').dbConnection;
 var Disco = require('./models/disco');
 
 var router = new express.Router();
+
+const ObjectId = require('mongodb').ObjectId;
 
 router.use(morgan('dev'));
 
@@ -32,7 +35,7 @@ router.route('/')
         disco.lanzamiento = req.body.lanzamiento;
         disco.imagenes = req.body.imagenes;
         disco.calificacion = req.body.calificacion;
-        disco.save(function (err) {
+        db.collection('Disco').insert(disco, function (err) {
             if (err)
                 res.send(err);
             res.json({
@@ -44,7 +47,7 @@ router.route('/')
 
     // Obtener 
     .get(function (req, res) {
-        Disco.find(function (err, discos) {
+        db.collection('Disco').find({}).toArray(function (err, discos) {
             if (err)
                 res.send(err);
             res.json(discos);
@@ -56,7 +59,7 @@ router.route('/')
 router.route('/:disco_id')
 
     .get(function (req, res) {
-        Disco.findById(req.params.disco_id, function (err, disco) {
+        db.collection('Disco').findById(req.params.disco_id, function (err, disco) {
             if (err)
                 res.status(500).send(err);
             else if (disco === null)
@@ -68,7 +71,7 @@ router.route('/:disco_id')
 
     // actualizar disco
     .put(function (req, res) {
-        Disco.findById(req.params.disco_id, function (err, disco) {
+        db.collection('Disco').findById(req.params.disco_id, function (err, disco) {
 
             if (err)
                 res.status(404).send(err);
@@ -89,7 +92,7 @@ router.route('/:disco_id')
     //eliminar
 
     .delete(function (req, res) {
-        Disco.remove({
+        db.collection('Disco').remove({
             _id: req.params.disco_id
         }, function (err, disco) {
             if (err)
