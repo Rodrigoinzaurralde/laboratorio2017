@@ -58,7 +58,7 @@ router.route('/')
 router.route('/:artista_nombre')
 
 .get(function (req, res) {
-        db.collection('Artista').findById(req.params.artista_id, function (err, artista) {
+        db.collection('Artista').findOne(req.param.artista_id, function (err, artista) {
             if (err)
                 res.status(500).send(err);
             else if (artista === null)
