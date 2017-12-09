@@ -56,18 +56,19 @@ router.route('/')
 
 // rutas  buscar  /disco/:disco_id
 
-router.route('/:disco_id')
+router.route('/:disco_nombre')
 
-    .get(function (req, res) {
-        db.collection('Disco').findById(req.params.disco_id, function (err, disco) {
-            if (err)
-                res.status(500).send(err);
-            else if (disco === null)
-                res.status(404).send('No se encontró');
-            else
-                res.json(disco);
-        });
-    })
+.get(function (req, res) {
+    db.collection('Disco').findOne(req.params.disco_id, function (err, disco) {
+        if (err)
+            res.status(500).send(err);
+        else if (disco === null)
+            res.status(404).send('No se encontró');
+        else
+            res.json(disco);
+    });
+})
+
 
     // actualizar disco
     .put(function (req, res) {

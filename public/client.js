@@ -33,7 +33,7 @@ $(function() {
  
   $.get('/api/cancion', function(canciones) {
     canciones.forEach(function(cancion) {
-      $('<li></li>').text(cancion.nombre).appendTo('ul#cancione');
+      $('<li></li>').text(cancion.nombre).appendTo('ul#cancion');
     });
   });
 

@@ -6,7 +6,7 @@ var Artista = require('./models/artista');
 var db = require('./../dbConnection').dbConnection;
 var router = new express.Router();
 
-const ObjectId = require('mongodb').ObjectId;
+var ObjectId = require('mongodb').ObjectId;
 
 router.use(morgan('dev'));
 
@@ -44,7 +44,7 @@ router.route('/')
         });
     })
 
-    // Obtener 
+    // Obtener todos
     .get(function (req, res) {
         db.collection('Artista').find({}).toArray(function (err, artistas) {
             if (err)
@@ -53,12 +53,12 @@ router.route('/')
         });
     });
 
-// rutas  buscar  /artista/:artista_id
+// buscar uno especifico  /artista/:artista_id
 
-router.route('/:artista_id')
+router.route('/:artista_nombre')
 
-    .get(function (req, res) {
-        db.collection('Artista').findById(req.params.artista_id, function (err, artista) {
+.get(function (req, res) {
+        db.collection('Artista').findOne(req.params.artista_id, function (err, artista) {
             if (err)
                 res.status(500).send(err);
             else if (artista === null)
@@ -70,7 +70,7 @@ router.route('/:artista_id')
 
     // actualizar artista
     .put(function (req, res) {
-        db.collection('Artista').findById(req.params.artista_id, function (err, artista) {
+        db.collection('Artista').findOne(req.params.artista_id, function (err, artista) {
 
             if (err)
                 res.status(404).send(err);

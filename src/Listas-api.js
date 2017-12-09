@@ -50,10 +50,10 @@ router.route('/')
 
 // rutas  buscar  /lista/:lista_id
 
-router.route('/:lista_id')
+router.route('/:lista_nombre')
 
     .get(function (req, res) {
-        Lista.findById(req.params.lista_id, function (err, lista) {
+        Lista.findOne(req.params.lista_id, function (err, lista) {
             if (err)
                 res.status(500).send(err);
             else if (lista === null)

@@ -55,18 +55,18 @@ router.route('/')
 
 // rutas  buscar  /cancion/:cancion_id
 
-router.route('/:cancion_id')
+router.route('/:cancion_nombre')
 
-    .get(function (req, res) {
-        db.collection('Cancion').findById(req.params.cancion_id, function (err, cancion) {
-            if (err)
-                res.status(500).send(err);
-            else if (cancion === null)
-                res.status(404).send('No se encontró esa canción');
-            else
-                res.json(cancion);
-        });
-    })
+.get(function (req, res) {
+    db.collection('Cancion').findOne(req.params.cancion_id, function (err, cancion) {
+        if (err)
+            res.status(500).send(err);
+        else if (cancion === null)
+            res.status(404).send('No se encontró');
+        else
+            res.json(cancion);
+    });
+})
 
     // actualizar cancion
     .put(function (req, res) {
